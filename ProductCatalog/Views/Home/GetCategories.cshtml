@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProductCatalog.Entity.Category>
+@{ 
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
+
+<div class="list-group">
+
+    <div class="list-group-item">
+        <a href="/Home/List" class="text-decoration-none">
+            <i class="fas fa-angle-double-right"></i>
+            All of Categories
+        </a>
+    </div>
+    @foreach (var item in Model)
+    {
+
+        if (selectedCategory != null)
+        {
+            //seçilen kategori id ile route id eşit ise
+            if (item.Id == int.Parse(selectedCategory.ToString()))
+            {
+                <a href="/Home/List/@item.Id" class="list-group-item list-group-item-action active categories-name " aria-current="true">
+                    <i class="fas fa-angle-double-right"></i>
+                    @item.Name
+                </a>
+            }
+            else
+            {
+                <a href="/Home/List/@item.Id" class="list-group-item list-group-item-action categories-name " aria-current="true">
+                    <i class="fas fa-angle-double-right"></i>
+                    @item.Name
+                </a>
+            }
+        }
+        else
+        {
+            <a href="/Home/List/@item.Id" class="list-group-item list-group-item-action categories-name " aria-current="true">
+                <i class="fas fa-angle-double-right"></i>
+                @item.Name
+            </a>
+        }
+    }
+</div>
+
+<!--
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action active" aria-current="true">The current link item</a>
+    <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+    <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+    <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+    <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">A disabled link item</a>
+</div>
+ -->
