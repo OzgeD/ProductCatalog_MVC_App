@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,9 @@ namespace ProductCatalog.Entity
     {
         public int Id { get; set; }
 
+        [DisplayName("Product Name")]
         public string Name { get; set; }
+        [DisplayName("Category Description")]
         public string Description { get; set; }
         public double Price { get; set; }
         public int Stock { get; set; }
