@@ -10,6 +10,7 @@ using ProductCatalog.Entity;
 
 namespace ProductCatalog.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class CategoryController : Controller
     {
         private DataContext db = new DataContext();
